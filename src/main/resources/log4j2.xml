@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+  <!-- Секция аппендеров -->
+  <Appenders>
+    <!-- Файловые аппендеры" -->
+    <!-- <RollingFile name="ERROR_file" fileName="logs/ERROR_logs.log"
+                 filePattern="logs/$${date:yyyy-MM-dd}/ERROR_logs-%d{yyyy-MM-dd}-#%i.log.zip">
+      <PatternLayout pattern="%highlight{%-5level} %d{dd.MM.yyyy HH:mm:ss,SSS} - class=%c{1} [method=%M] %L:%n   %msg%n"/>
+      <Policies>
+        <TimeBasedTriggeringPolicy />
+        <SizeBasedTriggeringPolicy size="100 KB" />
+      </Policies>
+      <DefaultRolloverStrategy max="3"/>
+    </RollingFile> -->
+    <RollingFile name="INFO_file" fileName="logs/INFO_logs.log"
+                 filePattern="logs/$${date:yyyy-MM-dd}/INFO_logs-%d{yyyy-MM-dd}-#%i.log.zip">
+      <PatternLayout pattern="%highlight{%-5level} %d{dd.MM.yyyy HH:mm:ss,SSS} - class=%c{1} [method=%M] %L:%n   %msg%n"/>
+      <Policies>
+        <TimeBasedTriggeringPolicy />
+        <SizeBasedTriggeringPolicy size="100 KB" />
+      </Policies>
+      <DefaultRolloverStrategy max="3"/>
+    </RollingFile>
+    <!-- <File name="App_file" append="false fileName="logs/App_logs.log">
+      <PatternLayout pattern="%highlight{%-5level} %d{dd.MM.yyyy HH:mm:ss,SSS} - class=%c{1} [method=%M] %L:%n   %msg%n"/>
+    </File> -->
+    <!-- Консольный аппендер -->  
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%highlight{%-5level} %d{dd.MM.yyyy HH:mm:ss,SSS} - class=%c{1} [method=%M] %L:%n   %msg%n"/>
+    </Console>  
+  </Appenders>
+
+  <!-- Секция логгеров -->
+  <!-- Уровни: TRACE DEBUG INFO WARN ERROR FATAL OFF -->
+  <Loggers>
+    <!-- Корневой логгер -->
+    <Root level="trace">
+      <AppenderRef level="debug" ref="Console"/>
+      <!-- <AppenderRef level="error" ref="ERROR_file"/> -->
+      <AppenderRef level="info" ref="INFO_file"/>
+    </Root>
+    <!-- Логгеры классов -->
+    <!-- <Logger name="project.App" level="trace">
+      <AppenderRef level="off" ref="App_file" additivity="true"/>
+    </Logger> -->
+  </Loggers>
+</Configuration> 
